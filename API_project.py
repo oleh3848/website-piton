@@ -3,6 +3,8 @@ import requests
 from PIL import Image, ImageTk
 from io import BytesIO
 
+
+text=input("Введи текст=   "  )
 root= tk.Tk()
 root.title("Cat Generator")
 root.geometry("450x600")
@@ -19,7 +21,7 @@ status.pack(pady=10)
 def get_cat():
     global photo
     status.config(text="Завантаження. . . . . .")
-    url="https://cataas.com/cat"
+    url=f"https://cataas.com/cat/says/{text}"
     response = requests.get(url, timeout=15)
     image=Image.open(BytesIO(response.content))
     image.thumbnail((350, 280))
